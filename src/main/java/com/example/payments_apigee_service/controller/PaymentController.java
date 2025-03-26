@@ -17,6 +17,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/payment")
+@CrossOrigin(origins = "*")
 public class PaymentController {
 
     @Autowired
@@ -28,7 +29,7 @@ public class PaymentController {
     @Value("${backend.service.url}")
     private String backendServiceUrl;
 
-    @PostMapping
+    @PostMapping(consumes = "application/json", produces = "application/json")
     public ResponseEntity<?> handlePayment(@RequestBody PaymentRequest request) {
         try {
             // Call validation service
